@@ -1,0 +1,31 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <script src="./react.js"></script>
+    <script src="./react-dom.js"></script>
+    <script src="https://cdnjs.cloudflare.com/ajax/libs/babel-core/5.8.34/browser.js"></script>
+    <title>React Components</title>
+</head>
+<body>
+
+<div id="react-container"></div>
+
+<!-- Special babel type script text -->
+<script type="text/babel">
+    // stateless functional component: returns a React element.
+    const MyComponent = () => {
+        return <div>
+            <h1>{this.props.text}</h1>
+            <p>This is my 3rd React component, with a Stateless Function returning a React element.</p>
+        </div>
+    };
+
+    ReactDOM.render(<MyComponent text="Hello Stateless Functional World with Attributes!"/>, document.getElementById('react-container'));
+
+
+</script>
+
+
+</body>
+</html>

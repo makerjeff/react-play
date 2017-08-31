@@ -1,0 +1,60 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <script src="./react.js"></script>
+    <script src="./react-dom.js"></script>
+    <script src="https://cdnjs.cloudflare.com/ajax/libs/babel-core/5.8.34/browser.js"></script>
+    <title>checkbox RnD</title>
+
+</head>
+<body>
+
+<div id="react-container"></div>
+
+<!-- Special babel type script text -->
+<script type="text/babel">
+    class Checkbox extends React.Component {
+
+        // ES6 way
+        constructor () {
+            super();
+            this.state = {checked: false};
+            this.handle_check = this.handle_check.bind(this);
+        }
+
+
+        handle_check() {
+            this.setState({checked: !this.state.checked});
+            console.log("state changed to " + this.state.checked);
+            console.log(this);
+        }
+
+        render() {
+
+            let msg;
+
+            if (this.state.checked) {
+                msg = "checked";
+            } else {
+                msg = "unchecked";
+            }
+
+            return (
+                <div>
+                    <input type="checkbox" onChange={this.handle_check} defaultChecked={this.state.checked}/>
+                    <p>This box is {msg}</p>
+                </div>
+            )
+        }
+    }
+
+    ReactDOM.render(<Checkbox/>, document.getElementById('react-container'));
+
+
+
+</script>
+
+
+</body>
+</html>

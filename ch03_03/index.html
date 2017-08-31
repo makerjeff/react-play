@@ -1,0 +1,32 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <script src="./react.js"></script>
+    <script src="./react-dom.js"></script>
+    <script src="https://cdnjs.cloudflare.com/ajax/libs/babel-core/5.8.34/browser.js"></script>
+    <title>React Components</title>
+</head>
+<body>
+
+<div id="react-container"></div>
+
+<!-- Special babel type script text -->
+<script type="text/babel">
+   //ES6 version of Ch03_02's class component
+    class MyComponent extends React.Component {
+        render() {
+            return <div>
+                <h1>Hello ES6 World</h1>
+                <p>This is my first React component, refactored to be in ES6!</p>
+            </div>
+        }
+    }
+
+    ReactDOM.render(<MyComponent/>, document.getElementById('react-container'))
+
+</script>
+
+
+</body>
+</html>

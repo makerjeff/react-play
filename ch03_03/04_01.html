@@ -1,0 +1,84 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <script src="./react.js"></script>
+    <script src="./react-dom.js"></script>
+    <script src="https://cdnjs.cloudflare.com/ajax/libs/babel-core/5.8.34/browser.js"></script>
+    <title>React Components Attributes</title>
+</head>
+<body>
+
+<div id="react-container"></div>
+
+<!-- Special babel type script text -->
+<script type="text/babel">
+
+    class RandomNumber {
+        constructor() {
+            this.name = 'RandomNumber Generator'
+        }
+
+        get_random_number() {
+            return Math.floor(Math.random() * 100);
+        }
+    }
+
+    class MyComponent extends React.Component {
+        render() {
+            return <div>
+                <h1>Hello ES6 world! ({this.props.text})</h1>
+                <div>Hello to the ES6 world again, in this review example. {this.props.children}</div>
+
+            </div>
+        }
+    }
+
+    class SubComponent extends React.Component{
+        render() {
+            return <div>
+                <ul>
+                    <li>sub component item 1 {this.props.sublist}</li>
+                    <li>sub component item 2</li>
+                    <li>sub component item 3</li>
+                    <li>sub component item 4</li>
+                </ul>
+            </div>
+        }
+    }
+
+    ReactDOM.render(
+        <div>
+            <MyComponent text="Hello world 1"> This is message 1
+                <ul>
+                    <li>something 1</li>
+                    <li>something 2</li>
+                    <li>something 3</li>
+                    <li>something 4</li>
+                    <li>something 5</li>
+                </ul>
+            </MyComponent>
+            <MyComponent text="Hello world 2">
+                <p>This is message 2</p>
+                <SubComponent/>
+            </MyComponent>
+            <MyComponent text="Hello world 3"> This is message 3 <SubComponent/></MyComponent>
+            <MyComponent text="Hello world 4"> This is message 4 <SubComponent/></MyComponent>
+            <MyComponent text="Hello world 5"> This is message 5 <SubComponent/></MyComponent>
+
+        </div>
+
+        , document.getElementById('react-container'));
+
+    let randomNumber = new RandomNumber();
+
+    console.log('Random number between 0 and 100: ' + randomNumber.get_random_number());
+
+
+
+
+</script>
+
+
+</body>
+</html>

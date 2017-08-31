@@ -1,0 +1,126 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <script src="./react.js"></script>
+    <script src="./react-dom.js"></script>
+    <script src="./prop-types.js"></script>
+    <script src="https://cdnjs.cloudflare.com/ajax/libs/babel-core/5.8.34/browser.js"></script>
+    <title>Building the Note Board</title>
+
+    <link rel="stylesheet" href="./css/style.css">
+</head>
+<body>
+
+<div id="react-container"></div>
+
+<!-- Special babel type script text -->
+<script type="text/babel">
+
+    // ES6
+//    import React from 'react';
+//    import PropTypes from 'prop-types';
+
+    // ES5
+//    let PropTypes = window.PropTypes;
+
+    // ---- ES6 Note Component ----
+    class Note extends React.Component {
+        constructor() {
+            super();
+
+            // set states
+            this.state = {editing: false};
+
+            // bind methods to 'this' scope. (ES6)
+            this.edit = this.edit.bind(this);
+            this.remove = this.remove.bind(this);
+            this.save = this.save.bind(this);
+            this.update_content = this.update_content.bind(this);
+            this.render_form = this.render_form.bind(this);
+            this.render_note = this.render_note.bind(this);
+        }
+
+        // custom edit method
+        edit() {
+            this.setState({editing: true});
+        }
+
+        // custom save method
+        save() {
+            let val = this.refs.newText.value;
+
+            this.update_content(val);
+
+//            alert('later we will save this value: ' + val);
+
+            this.setState({editing: false});
+        }
+
+        // custom remove method
+        remove() {
+            alert("removing note");
+        }
+
+        // custom data update method
+        update_content(data) {
+            console.log('TODO: update ' + data);
+        }
+
+        // render form
+        render_form() {
+            return (
+                <div className="note">
+                    <textarea name="text_box" id="text_box" cols="15" rows="10" ref="newText"></textarea>
+                    <button onClick={this.save}>SAVE</button>
+                </div>
+            )
+        }
+
+        // render note
+        render_note() {
+            return (
+                    <div className="note">
+                        <p>{this.props.children}</p>
+                        <span>
+                            <button onClick={this.edit}>EDIT</button>
+                            <button onClick={this.remove}>X</button>
+                        </span>
+                    </div>
+            )
+        }
+
+        // default render method
+        render() {
+            //if there's more than one render method, use this for logic
+            return (this.state.editing) ? this.render_form() : this.render_note();
+        }
+    }
+
+    // ---- ES6 BOARD COMPONENT ----
+    class Board extends React.Component {
+        constructor () {
+            super();
+        }
+
+        render() {
+            return (
+                <div className="board">
+                    {this.props.count}
+                    <Note>Information</Note>
+
+                </div>
+            )
+        }
+    }
+
+
+    // ---- REACT-DOM RENDER
+    ReactDOM.render(<Board count={10}/>, document.getElementById('react-container'));
+
+
+</script>
+
+
+</body>
+</html>
