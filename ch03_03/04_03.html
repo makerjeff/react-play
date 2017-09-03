@@ -17,19 +17,13 @@
 <!-- Special babel type script text -->
 <script type="text/babel">
 
-    // ES6
-//    import React from 'react';
-//    import PropTypes from 'prop-types';
 
-    // ES5
-//    let PropTypes = window.PropTypes;
-
-    // ---- ES6 Note Component ----
+    // ---- ES6 Note React Component ----
     class Note extends React.Component {
         constructor() {
             super();    // call the super's constructor.
 
-            // set states
+            // set states (ES6 getInitialState)
             this.state = {editing: false};
 
             // bind methods to 'this' scope. (ES6)
@@ -101,6 +95,27 @@
     class Board extends React.Component {
         constructor () {
             super();
+
+            // set states (ES6 getInitialState)
+            this.state = {
+
+                // in the future, replace this with MongoDB call.
+                notes: [
+                    {id: 0, note: 'Call Bob'},
+                    {id: 1, note: 'Email Sarah'},
+                    {id: 2, note: 'Eat Lunch'},
+                    {id: 3, note: 'Finish Proposal'}
+                ]
+            };
+        }
+
+        update(newText, id) {
+            //TODO: update note ID with newText.
+
+            let note = this.state.notes.map(
+                note => (note.id !== id) ? note: {...note, note: newText}
+
+            );
         }
 
         // TODO: figure ES6 propType checking for React.
@@ -108,8 +123,6 @@
         render() {
             return (
                 <div className="board">
-                    {this.props.count}
-                    {/*<Note>Information</Note>*/}
 
                 </div>
             )

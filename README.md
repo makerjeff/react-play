@@ -4,6 +4,7 @@
 - Download Chrome Extensions: React Detector, React Developer Tools.
     - this detects versions of React, as well as has a debugger specific to react states and props.
 - [Babel in-Browser Transpiler](https://cdnjs.cloudflare.com/ajax/libs/babel-core/5.8.34/browser.js): Use this for development, use proper transpiler for production.
+- [Gulp-Babel](https://www.npmjs.com/package/gulp-babel)
 - "Component"
     - React.createClass({})
     - always requires a 'render()' function within createClass.
@@ -41,3 +42,10 @@
 - [Refactoring React Components to ES6 classes](https://www.newmediacampaigns.com/blog/refactoring-react-components-to-es6-classes)
     - must use this.method = this.method.bind(this);
     - must set states using this.setState({states object});
+- template literals require 'back ticks' ``, not quotes ''
+- [ES6 Spread Operators](https://davidwalsh.name/spread-operator): Essentially the same as using function.apply(), but with a simpler sytax.
+    - Example: function.apply(null, args) vs function(...args);
+    - NOTE: Used when you want to pass a different 'this' to the function.
+
+### ARRAYS review
+- [Array.prototype.map()](https://developer.mozilla.org/en-US/docs/Web/JavaScript/Reference/Global_Objects/Array/map): Returns (don't forget to use the keyword 'return', otherwise array will be undefined) a new array with the results of calling a provided function on every element in the calling array. Essentially, you can perform an operation on each element, such as doubling a number, appending a suffix, etc.
