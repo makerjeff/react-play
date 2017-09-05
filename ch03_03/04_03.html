@@ -100,18 +100,11 @@
             this.state = {
 
                 // in the future, replace this with MongoDB call.
-//                notes: [
-//                    {id: 0, note: 'Call Bob'},
-//                    {id: 1, note: 'Email Sarah'},
-//                    {id: 2, note: 'Eat Lunch'},
-//                    {id: 3, note: 'Finish Proposal'}
-//                ]
-
                 notes: [
-                    'Call Bob',
-                    'Email Sarah',
-                    'Eat Lunch',
-                    'Finish Proposal'
+                    {id: 0, note: 'Call Bob'},
+                    {id: 1, note: 'Email Sarah'},
+                    {id: 2, note: 'Eat Lunch'},
+                    {id: 3, note: 'Finish Proposal'}
                 ]
             };
         }
@@ -130,6 +123,7 @@
         render() {
             return (<div className="board">
                     {this.state.notes.map((note, ind, arr) => {
+                        //TODO: convert this to function for objects.
                         return <Note key={ind}>{note}</Note>
                     })}
                     </div>
