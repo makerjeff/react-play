@@ -61,7 +61,7 @@
             console.log('TODO: update ' + data);
         }
 
-        // render form
+        // render the form
         render_form() {
             return (
                 <div className="note">
@@ -71,16 +71,16 @@
             )
         }
 
-        // render note
+        // render Note (this is what renders <Note></Note>)
         render_note() {
             return (
-                    <div className="note">
-                        <p>{this.props.children}</p>
-                        <span>
-                            <button onClick={this.edit}>EDIT</button>
-                            <button onClick={this.remove}>X</button>
-                        </span>
-                    </div>
+                <div className="note">
+                    <p>{this.props.children}</p>
+                    <span>
+                        <button onClick={this.edit}>EDIT</button>
+                        <button onClick={this.remove}>X</button>
+                    </span>
+                </div>
             )
         }
 
@@ -100,31 +100,39 @@
             this.state = {
 
                 // in the future, replace this with MongoDB call.
+//                notes: [
+//                    {id: 0, note: 'Call Bob'},
+//                    {id: 1, note: 'Email Sarah'},
+//                    {id: 2, note: 'Eat Lunch'},
+//                    {id: 3, note: 'Finish Proposal'}
+//                ]
+
                 notes: [
-                    {id: 0, note: 'Call Bob'},
-                    {id: 1, note: 'Email Sarah'},
-                    {id: 2, note: 'Eat Lunch'},
-                    {id: 3, note: 'Finish Proposal'}
+                    'Call Bob',
+                    'Email Sarah',
+                    'Eat Lunch',
+                    'Finish Proposal'
                 ]
             };
         }
 
         update(newText, id) {
-            //TODO: update note ID with newText.
+            //TODO: update note ID with newText. [NOT WORKING]
 
+            // arr.map(function callback(current_value, index, array) {});
             let note = this.state.notes.map(
                 note => (note.id !== id) ? note: {...note, note: newText}
 
             );
         }
-
         // TODO: figure ES6 propType checking for React.
 
         render() {
-            return (
-                <div className="board">
-
-                </div>
+            return (<div className="board">
+                    {this.state.notes.map((note, ind, arr) => {
+                        return <Note key={ind}>{note}</Note>
+                    })}
+                    </div>
             )
         }
     }
@@ -136,6 +144,13 @@
 
 </script>
 
+
+<!--<div className="board">-->
+    <!--<Note key={this.state.notes[0].id}> {this.state.notes[0].note}</Note>-->
+    <!--<Note key={this.state.notes[1].id}> {this.state.notes[1].note}</Note>-->
+    <!--<Note key={this.state.notes[2].id}> {this.state.notes[2].note}</Note>-->
+    <!--<Note key={this.state.notes[3].id}> {this.state.notes[3].note}</Note>-->
+<!--</div>-->
 
 </body>
 </html>

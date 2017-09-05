@@ -36,6 +36,8 @@
     
 - "propTypes"
     - [React Documentation: PropTypes in ES6](https://facebook.github.io/react/docs/typechecking-with-proptypes.html)
+
+- [React Keys](https://facebook.github.io/react/docs/lists-and-keys.html#keys): Helps React identify which items have changed, are added, or are removed.
     
 ### ES6
 - [Sample ES6 Classes](https://googlechrome.github.io/samples/classes-es6/)
@@ -49,3 +51,4 @@
 
 ### ARRAYS review
 - [Array.prototype.map()](https://developer.mozilla.org/en-US/docs/Web/JavaScript/Reference/Global_Objects/Array/map): Returns (don't forget to use the keyword 'return', otherwise array will be undefined) a new array with the results of calling a provided function on every element in the calling array. Essentially, you can perform an operation on each element, such as doubling a number, appending a suffix, etc.
+    - arr.map(function callback(currentValue, index, array) { \<do something here\> });
