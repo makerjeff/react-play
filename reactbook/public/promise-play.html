@@ -1,0 +1,50 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="user-scalable=no width=device-width, initial-scale=1">
+    <title>promise play</title>
+
+    <style>
+        button {
+            cursor: pointer;
+        }
+    </style>
+</head>
+<body>
+
+<button id="button1">XHR</button>
+
+
+<script>
+    var button = document.getElementById('button1');
+
+    button.addEventListener('click', (e) => {
+        e.preventDefault();
+
+        console.log('clicked');
+
+        XHR('GET', 'http://localhost:3000/promise');
+    });
+
+
+    function XHR(http_verb, url) {
+        var xhr = new XMLHttpRequest();
+        xhr.open(http_verb, url, true);
+        xhr.responseType = 'text';
+
+        xhr.onload = (evt) => {
+
+            if(xhr.status === 200) {
+
+                let data = xhr.responseText;
+                console.log(data);
+                document.body.innerHTML = data;
+            }
+        };
+
+        xhr.send();
+    }
+</script>
+</body>
+</html>
